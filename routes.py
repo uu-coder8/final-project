@@ -341,7 +341,7 @@ def cv_compare_page(job_id):
     form = CompareForm()
     result = None
     filename = None
-
+    dirs=os.listdir()
     job_description = Job.query.get_or_404(job_id).full_description
 
     if form.validate_on_submit():
@@ -376,7 +376,7 @@ def cv_compare_page(job_id):
             flash(f'An unexpected error occurred: {str(e)}', 'danger')
 
     return render_template('compare.html', form=form, result=result, 
-                         filename=filename, job_id=job_id)
+                         filename=filename, job_id=job_id,dirs=dirs)
 
 
 @app.errorhandler(403)
