@@ -4,7 +4,7 @@ from pypdf import PdfReader
 from huggingface_hub import InferenceClient
 
 API_TOKEN ="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"
-client = InferenceClient(model="meta-llama/Meta-Llama-3-8B-Instruct", api_key=API_TOKEN )
+client = InferenceClient(model="meta-llama/Meta-Llama-3-8B-Instruct", token=API_TOKEN )
 
 
 def load_file(path):
