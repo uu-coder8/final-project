@@ -41,7 +41,7 @@ class AddJobForm(FlaskForm):
     title = StringField(label='Title', validators=[DataRequired(), Length(min=5, max=100)])
     date_posted = DateField(label='Post Date', format="%Y-%m-%d", default=date.today, validators=[DataRequired()])
     date_expire = DateField(label='Expire Date', format="%Y-%m-%d",default=lambda: date.today() + timedelta(days=30), validators=[DataRequired()])
-    short_description = TextAreaField('Short Description', validators=[DataRequired(), Length(min=20, max=200)])
+    short_description = TextAreaField('Short Description', validators=[DataRequired(), Length(min=20, max=500)])
     full_description = TextAreaField('Full Description', validators=[DataRequired(), Length(min=50)])
     company = StringField(label='Company', validators=[DataRequired(), Length(max=100)])
     salary = IntegerField(label='Salary',validators=[Optional(),NumberRange(min=0, max=10000000)])
