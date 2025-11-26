@@ -43,7 +43,7 @@ def home_page():
     page = request.args.get('page', 1, type=int)
 
     # base query
-    query = Job.query
+    query = Job.query.order_by(Job.id.desc())
 
     # Filter by company if specified
     if company:
