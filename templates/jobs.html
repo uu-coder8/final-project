@@ -149,30 +149,31 @@
 
                     <!-- Pagination -->
                     {% if jobs and jobs.total > 0 %}
-                    <div class="pagination">
-                        {% if jobs.has_prev %}
-                            <a href="{{ url_for('home_page', page=jobs.prev_num, **request.args) }}" class="page-btn">Previous</a>                        {% else %}
-                            <span class="page-btn disabled">Previous</span>
-                        {% endif %}
-
-                        {% for page_num in jobs.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-                            {% if page_num %}
-                                {% if page_num == jobs.page %}
-                                    <span class="page-btn active">{{ page_num }}</span>
-                                {% else %}
-                                    <a href="{{ url_for('home_page', page=page_num, **request.args) }}" class="page-btn">{{ page_num }}</a>
-                                {% endif %}
+                        <div class="pagination">
+                            {% if jobs.has_prev %}
+                                <a href="{{ url_for('home_page', page=jobs.prev_num, search=request.args.get('search'), location=request.args.get('location'), company=request.args.get('company'), order_by=request.args.get('order_by')) }}" class="page-btn">Previous</a>
                             {% else %}
-                                <span class="page-btn disabled">...</span>
+                                <span class="page-btn disabled">Previous</span>
                             {% endif %}
-                        {% endfor %}
-
-                        {% if jobs.has_next %}
-                            <a href="{{ url_for('home_page', page=jobs.next_num, **request.args) }}" class="page-btn">Next</a>
-                        {% else %}
-                            <span class="page-btn disabled">Next</span>
-                        {% endif %}
-                    </div>
+                        
+                            {% for page_num in jobs.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                                {% if page_num %}
+                                    {% if page_num == jobs.page %}
+                                        <span class="page-btn active">{{ page_num }}</span>
+                                    {% else %}
+                                        <a href="{{ url_for('home_page', page=page_num, search=request.args.get('search'), location=request.args.get('location'), company=request.args.get('company'), order_by=request.args.get('order_by')) }}" class="page-btn">{{ page_num }}</a>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="page-btn disabled">...</span>
+                                {% endif %}
+                            {% endfor %}
+                        
+                            {% if jobs.has_next %}
+                                <a href="{{ url_for('home_page', page=jobs.next_num, search=request.args.get('search'), location=request.args.get('location'), company=request.args.get('company'), order_by=request.args.get('order_by')) }}" class="page-btn">Next</a>
+                            {% else %}
+                                <span class="page-btn disabled">Next</span>
+                            {% endif %}
+                        </div>
                     {% endif %}
                 </main>
             </div>
