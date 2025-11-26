@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Create Account - JobConnect{% endblock %}
+
+{% block content %}
+
+    <div class="login-container">
+        <h1>Welcome back</h1>
+        <p class="subtitle">Sign in to your account to continue</p>
+
+        <form class="register-form" method="POST" action="{{ url_for('login_page') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-input", placeholder="john@example.com") }}
+                {% for error in form.email.errors %}
+                        <p class="form-hint text-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-input", autocomplete="new-password", placeholder="Enter password") }}
+                {% for error in form.password.errors %}
+                        <p class="form-hint text-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="remember-forgot">
+                <label class="checkbox-container">
+                    {{ form.remember() }}
+                    <span class="checkbox-label">
+                        {{ form.remember.label }}
+                    </span>
+                </label>
+                <a href="{{ url_for('contact_page') }}" class="forgot-link">Forgot password?</a>
+            </div>
+
+            {{ form.submit(class="btn-submit btn-full") }}
+        </form>
+
+        <p class="signup-link">
+            Don't have an account? <a href="{{ url_for('register_page') }}">Register</a>
+        </p>
+    </div>
+
+{% endblock %}

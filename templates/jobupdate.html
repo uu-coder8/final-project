@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Update Job - JobConnect{% endblock %}
+
+{% block content %}
+<!-- Update Job Section -->
+<section class="section section-gray">
+    <div class="container">
+        <div class="register-wrapper">
+            <div class="register-container">
+                <div class="register-header">
+                    <h1>Update Job</h1>
+                    <p>Edit your job posting details</p>
+                </div>
+
+                <!-- Update Job Form -->
+                <form class="register-form" method="POST" action="{{ url_for('update_job_page', job_id=job.id) }}" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-group">
+                        {{ form.title.label(class="form-label") }}
+                        {{ form.title(class="form-input", placeholder="Job Title") }}
+                        {% for error in form.title.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            {{ form.date_posted.label(class="form-label") }}
+                            {{ form.date_posted(class="form-input") }}
+                            {% for error in form.date_posted.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.date_expire.label(class="form-label") }}
+                            {{ form.date_expire(class="form-input") }}
+                            {% for error in form.date_expire.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.short_description.label(class="form-label") }}
+                        {{ form.short_description(class="form-input", placeholder="Write here", rows=3) }}
+                        {% for error in form.short_description.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.full_description.label(class="form-label") }}
+                        {{ form.full_description(class="form-input", placeholder="Write here", rows=8) }}
+                        {% for error in form.full_description.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.company.label(class="form-label") }}
+                        {{ form.company(class="form-input", placeholder="Company Name") }}
+                        {% for error in form.company.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.salary.label(class="form-label") }}
+                        {{ form.salary(class="form-input", placeholder="Salary (Default : 1000$)") }}
+                        {% for error in form.salary.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.location.label(class="form-label") }}
+                        {{ form.location(class="form-input", placeholder="Location") }}
+                        {% for error in form.location.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.category.label(class="form-label") }}
+                        {{ form.category(class="form-input", placeholder="Category") }}
+                        {% for error in form.category.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div style="display: flex; gap: 12px;">
+                        {{ form.submit(class="btn-submit btn-full") }}
+                        <a href="{{ url_for('profile_page') }}" class="btn-submit btn-full" style="background: #6c757d; text-align: center; text-decoration: none;">Cancel</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

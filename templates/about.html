@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}
+About Us
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Connecting Talent with Opportunity</h1>
+            <p>We're on a mission to transform the way people find jobs and companies discover talent</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="container">
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h2>Our Mission</h2>
+                    <p>At JobConnect, we believe that finding the right job should be simple, transparent, and empowering. We've built a platform that connects talented professionals with companies that value their skills and potential.</p>
+                    <p>Since our founding in 2020, we've helped over 500,000 job seekers find their dream careers and assisted 10,000+ companies in building exceptional teams.</p>
+                </div>
+                <div class="mission-stats">
+                    <div class="stat-card">
+                        <h3>500K+</h3>
+                        <p>Jobs Posted</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>10K+</h3>
+                        <p>Companies</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>2M+</h3>
+                        <p>Active Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>95%</h3>
+                        <p>Success Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="container">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Transparency</h3>
+                    <p>We believe in clear communication, honest job descriptions, and fair compensation practices.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Trust</h3>
+                    <p>Building lasting relationships between job seekers and employers through verified profiles and reviews.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Innovation</h3>
+                    <p>Constantly improving our platform with AI-powered matching and modern recruitment tools.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Diversity</h3>
+                    <p>Promoting inclusive hiring practices and equal opportunities for everyone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2>Meet Our Leadership</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="avatar">JD</div>
+                    </div>
+                    <h3>Jane Doe</h3>
+                    <p class="role">CEO & Founder</p>
+                    <p class="bio">15+ years in HR tech with a passion for connecting people.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="avatar">MS</div>
+                    </div>
+                    <h3>Michael Smith</h3>
+                    <p class="role">CTO</p>
+                    <p class="bio">Tech innovator focused on AI and machine learning solutions.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="avatar">SJ</div>
+                    </div>
+                    <h3>Sarah Johnson</h3>
+                    <p class="role">Head of Operations</p>
+                    <p class="bio">Expert in scaling operations and building strong teams.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="avatar">DL</div>
+                    </div>
+                    <h3>David Lee</h3>
+                    <p class="role">VP of Marketing</p>
+                    <p class="bio">Brand strategist with a focus on user experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Join thousands of professionals who've found their dream job with us</p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('home_page') }}">
+                        <button class="btn-large btn-primary">Find Jobs</button>
+                    </a>
+                    <a href="{{ url_for('add_job_page') }}">
+                        <button class="btn-large btn-primary">Post a Job</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}CV Comparison{% endblock %}
+{% block content %}
+<!-- Comparison Section -->
+<section class="section section-gray">
+    <div class="container">
+        <div class="register-wrapper">
+            <div class="register-container">
+                <div class="register-header">
+                    <h1>Compare CV to Job Description</h1>
+                </div>
+                <!-- Compare Form -->
+                <form class="register-form" method="POST" action="{{ url_for('cv_compare_page',job_id=job_id) }}" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-row-centered">
+                        <div class="form-group-centered">
+                            {{ form.cv.label(class="form-label") }}
+                            {{ form.cv(class="form-input", accept=".pdf,.docx,.txt", id="CvInput") }}
+                            {% for error in form.cv.errors %}
+                            <p class="form-hint text-danger">{{ error }}</p>
+                            {% endfor %}
+
+                            <!-- Preview Elements -->
+                            <div class="cv-preview-container">
+                                <span id="fileName" class="file-name"></span>
+                                <button type="button" id="removeCv" class="btn-remove" style="display: none;">Remove File</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row-centered">
+                        {{ form.submit(class="btn-compare") }}
+                    </div>
+                </form>
+
+                <!-- Results Section -->
+                {% if result %}
+                <div class="results-section">
+                    <div class="results-header">
+                        <h2>Comparison Results</h2>
+                        {% if filename %}
+                        <p class="filename">File: {{ filename }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="result-card">
+                        <pre class="result-text">{{ result }}</pre>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button onclick="window.print()" class="btn-print">Print Results</button>
+                        <a href="{{ url_for('cv_compare_page',job_id=job_id) }}" class="btn-new">Compare Another CV</a>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        const cvInput = document.getElementById('CvInput');
+        const fileName = document.getElementById('fileName');
+        const removeBtn = document.getElementById('removeCv');
+
+        // Show preview when file selected
+        if (cvInput) {
+            cvInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    fileName.textContent = file.name;
+                    fileName.style.display = 'inline-block';
+                    removeBtn.style.display = 'inline-block';
+                }
+            });
+        }
+
+        // Remove selected file
+        if (removeBtn) {
+            removeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                cvInput.value = '';
+                fileName.textContent = '';
+                fileName.style.display = 'none';
+                removeBtn.style.display = 'none';
+            });
+        }
+    });
+</script>
+
+{% endblock %}

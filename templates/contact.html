@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - JobConnect{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Get in Touch</h1>
+        <p>Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section section-white">
+    <div class="container">
+        <div class="grid-2" style="gap: 60px; align-items: start;">
+            <!-- Contact Form -->
+            <div>
+                <h2 style="font-size: 32px; margin-bottom: 20px; color: #1a202c;">Send Us a Message</h2>
+                <p style="color: #718096; margin-bottom: 30px;">Fill out the form below and our team will get back to you within 24 hours.</p>
+                
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <select class="form-select" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Technical Support</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-textarea" placeholder="Tell us what you need help with..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+            
+            <!-- Contact Info -->
+            <div>
+                <h2 style="font-size: 32px; margin-bottom: 20px; color: #1a202c;">Contact Information</h2>
+                <p style="color: #718096; margin-bottom: 40px;">You can also reach us through these channels.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div class="card" style="padding: 24px;">
+                        <div style="display: flex; align-items: start; gap: 16px;">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #A1A8B2 0%, #5D88BB 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="font-size: 24px;">📧</span>
+                            </div>
+                            <div>
+                                <h3 style="margin-bottom: 4px; font-size: 18px;">Email</h3>
+                                <a href="mailto:info@jobconnect.com" style="color: #667eea; text-decoration: none; font-weight: 600;">info@jobconnect.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="padding: 24px;">
+                        <div style="display: flex; align-items: start; gap: 16px;">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #A1A8B2 0%, #5D88BB 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="font-size: 24px;">📞</span>
+                            </div>
+                            <div>
+                                <h3 style="margin-bottom: 4px; font-size: 18px;">Phone</h3>
+                                <p style="color: #718096; margin-bottom: 4px;">Mon-Fri from 8am to 6pm</p>
+                                <a href="tel:+15551234567" style="color: #667eea; text-decoration: none; font-weight: 600;">+1 (555) 123-4567</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="padding: 24px;">
+                        <div style="display: flex; align-items: start; gap: 16px;">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #A1A8B2 0%, #5D88BB 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="font-size: 24px;">📍</span>
+                            </div>
+                            <div>
+                                <h3 style="margin-bottom: 4px; font-size: 18px;">Office</h3>
+                                <p style="color: #718096; margin-bottom: 4px;">Visit us at</p>
+                                <p style="color: #667eea; font-weight: 600;">123 Business St, Suite 100<br>San Francisco, CA 94102</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="padding: 24px;">
+                        <div style="display: flex; align-items: start; gap: 16px;">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #A1A8B2 0%, #5D88BB 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="font-size: 24px;">💬</span>
+                            </div>
+                            <div>
+                                <h3 style="margin-bottom: 4px; font-size: 18px;">Live Chat</h3>
+                                <p style="color: #718096; margin-bottom: 4px;">Available 24/7</p>
+                                <a href="#" style="color: #667eea; text-decoration: none; font-weight: 600;">Start a conversation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section section-gray">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Quick answers to common questions</p>
+        
+        <div style="max-width: 800px; margin: 0 auto; margin-top: 12px;">
+            <div class="card" style="margin-bottom: 20px; padding: 30px;">
+                <h3 style="margin-bottom: 12px; font-size: 20px; color: #1a202c;">How do I create an account?</h3>
+                <p style="color: #718096; line-height: 1.7;">Click the "Sign Up" button in the top right corner and follow the registration process. You can sign up using your email or social media accounts.</p>
+            </div>
+            
+            <div class="card" style="margin-bottom: 20px; padding: 30px;">
+                <h3 style="margin-bottom: 12px; font-size: 20px; color: #1a202c;">Is JobConnect free to use?</h3>
+                <p style="color: #718096; line-height: 1.7;">Yes! Job seekers can browse and apply to jobs completely free. Employers have both free and premium options for posting jobs.</p>
+            </div>
+            
+            <div class="card" style="margin-bottom: 20px; padding: 30px;">
+                <h3 style="margin-bottom: 12px; font-size: 20px; color: #1a202c;">How long does it take to hear back from employers?</h3>
+                <p style="color: #718096; line-height: 1.7;">Response times vary by employer, but most companies respond within 1-2 weeks. You'll receive email notifications when employers view or respond to your application.</p>
+            </div>
+            
+            <div class="card" style="padding: 30px; margin-bottom: 12px;">
+                <h3 style="margin-bottom: 12px; font-size: 20px; color: #1a202c;">Can I edit my profile after creating it?</h3>
+                <p style="color: #718096; line-height: 1.7;">Absolutely! You can update your profile, resume, and preferences at any time from your account dashboard.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

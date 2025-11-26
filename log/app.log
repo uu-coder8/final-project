@@ -1,0 +1,51 @@
+2025-11-26 10:22:56,037 - INFO - User johndoe logged in
+2025-11-26 10:22:56,456 - INFO - User johndoe logged in
+2025-11-26 10:22:56,459 - WARNING - Unauthorized delete attempt: User johndoe tried to delete job 2
+2025-11-26 10:22:56,646 - INFO - User johndoe logged in
+2025-11-26 10:22:56,650 - INFO - Job deleted: Python Developer (ID: 1) by johndoe
+2025-11-26 10:22:57,196 - INFO - User johndoe logged in
+2025-11-26 10:22:57,727 - INFO - User johndoe logged in
+2025-11-26 10:22:57,899 - INFO - User johndoe logged in
+2025-11-26 10:22:58,021 - WARNING - Failed login attempt: nonexistent@test.com
+2025-11-26 10:22:58,192 - WARNING - Failed login attempt: john@test.com
+2025-11-26 10:22:58,363 - INFO - User johndoe logged in
+2025-11-26 10:22:58,364 - INFO - User johndoe logged out
+2025-11-26 10:22:58,649 - INFO - User johndoe logged in
+2025-11-26 10:22:59,443 - INFO - User johndoe logged in
+2025-11-26 10:22:59,444 - WARNING - Unauthorized update attempt: User johndoe tried to update job 2
+2025-11-26 10:22:59,622 - INFO - User johndoe logged in
+2025-11-26 10:24:06,281 - INFO - User johndoe logged in
+2025-11-26 10:24:06,704 - INFO - User johndoe logged in
+2025-11-26 10:24:06,706 - WARNING - Unauthorized delete attempt: User johndoe tried to delete job 2
+2025-11-26 10:24:06,892 - INFO - User johndoe logged in
+2025-11-26 10:24:06,895 - INFO - Job deleted: Python Developer (ID: 1) by johndoe
+2025-11-26 10:24:07,434 - INFO - User johndoe logged in
+2025-11-26 10:24:07,968 - INFO - User johndoe logged in
+2025-11-26 10:24:08,142 - INFO - User johndoe logged in
+2025-11-26 10:24:08,261 - WARNING - Failed login attempt: nonexistent@test.com
+2025-11-26 10:24:08,426 - WARNING - Failed login attempt: john@test.com
+2025-11-26 10:24:08,594 - INFO - User johndoe logged in
+2025-11-26 10:24:08,595 - INFO - User johndoe logged out
+2025-11-26 10:24:08,882 - INFO - User johndoe logged in
+2025-11-26 10:24:09,641 - INFO - User johndoe logged in
+2025-11-26 10:24:09,643 - WARNING - Unauthorized update attempt: User johndoe tried to update job 2
+2025-11-26 10:24:09,812 - INFO - User johndoe logged in
+2025-11-26 10:25:44,381 - INFO - User johndoe logged in
+2025-11-26 10:25:44,387 - INFO - Job posted: New Job Title Here by johndoe
+2025-11-26 10:25:44,803 - INFO - User johndoe logged in
+2025-11-26 10:25:44,806 - WARNING - Unauthorized delete attempt: User johndoe tried to delete job 2
+2025-11-26 10:25:44,985 - INFO - User johndoe logged in
+2025-11-26 10:25:44,988 - INFO - Job deleted: Python Developer (ID: 1) by johndoe
+2025-11-26 10:25:45,524 - INFO - User johndoe logged in
+2025-11-26 10:25:46,061 - INFO - User johndoe logged in
+2025-11-26 10:25:46,234 - INFO - User johndoe logged in
+2025-11-26 10:25:46,353 - WARNING - Failed login attempt: nonexistent@test.com
+2025-11-26 10:25:46,522 - WARNING - Failed login attempt: john@test.com
+2025-11-26 10:25:46,688 - INFO - User johndoe logged in
+2025-11-26 10:25:46,689 - INFO - User johndoe logged out
+2025-11-26 10:25:46,974 - INFO - User johndoe logged in
+2025-11-26 10:25:47,380 - INFO - New user registered: newuser
+2025-11-26 10:25:47,780 - INFO - User johndoe logged in
+2025-11-26 10:25:47,782 - WARNING - Unauthorized update attempt: User johndoe tried to update job 2
+2025-11-26 10:25:47,949 - INFO - User johndoe logged in
+2025-11-26 10:25:47,953 - INFO - Job updated: Senior Python Developer (ID: 1) by johndoe

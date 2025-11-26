@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}Registration - JobConnect{% endblock %}
+
+{% block content %}
+<!-- Register Section -->
+<section class="section section-gray">
+    <div class="container">
+        <div class="register-wrapper">
+            <div class="register-container">
+                <div class="register-header">
+                    <h1>Create Your Account</h1>
+                    <p>Join thousands of professionals finding their dream jobs</p>
+                </div>
+
+                <!-- Registration Form -->
+                <form class="register-form" method="POST" action="{{ url_for('register_page') }}" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div class="form-row">
+                        <div class="form-group">
+                            {{ form.firstname.label(class="form-label") }}
+                            {{ form.firstname(class="form-input", placeholder="John") }}
+                            {% for error in form.firstname.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                            {% endfor %}
+
+                        </div>
+                        <div class="form-group">
+                            {{ form.lastname.label(class="form-label") }}
+                            {{ form.lastname(class="form-input", placeholder="Doe") }}
+                            {% for error in form.lastname.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.username.label(class="form-label") }}
+                        {{ form.username(class="form-input", placeholder="Username2025") }}
+                        {% for error in form.username.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-input", placeholder="john@example.com") }}
+                        {% for error in form.email.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.password.label(class="form-label") }}
+                        {{ form.password(class="form-input", autocomplete="new-password", placeholder="Create a strong password") }}
+                        {% for error in form.password.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+                        <p class="form-hint">Must be at least 8 characters</p>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.password_confirm.label(class="form-label") }}
+                        {{ form.password_confirm(class="form-input", autocomplete="new-password", placeholder="Confirm your password") }}
+                        {% for error in form.password_confirm.errors %}
+                                <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.image.label(class="form-label") }}
+                        {{ form.image(class="form-input", accept="image/*", id="imageInput") }}
+                        {% for error in form.image.errors %}
+                            <p class="form-hint text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                        <img id="imagePreview" style="max-width: 100px; margin-top: 10px; display: none; border-radius: 8px;">
+                        <button type="button" id="removeImage" style="display: none; margin-top: 10px;" class="btn-secondary">Remove Image</button>
+                    </div>
+                    
+                    {{ form.submit(class="btn-submit btn-full") }}
+                </form>
+
+                <div class="register-footer">
+                    <p>Already have an account? <a href="{{ url_for('login_page') }}" class="link-primary">Log in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const imageInput = document.getElementById('imageInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const removeBtn = document.getElementById('removeImage');
+
+    // Show preview when file selected
+    if (imageInput) {
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    removeBtn.style.display = 'inline-block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // Remove selected image
+    if (removeBtn) {
+        removeBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent any default behavior
+            imageInput.value = '';  // Clear the file input
+            imagePreview.style.display = 'none';
+            imagePreview.src = '';
+            removeBtn.style.display = 'none';
+        });
+    }
+});
+</script>
+{% endblock %}

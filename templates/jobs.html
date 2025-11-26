@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% block title %}Browse Jobs - JobBoard{% endblock %}
+{% block content %}
+
+<div class="jobs-page">
+    <!-- Hero Section -->
+    <section class="jobs-hero">
+        <div class="container">
+            <h1>Find Your Dream Job</h1>
+            <p>Discover thousands of opportunities from top companies</p>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form method="GET" action="{{ url_for('home_page') }}" class="job-search-form">
+                    <div class="search-input-group">
+                        <input type="text" name="search" placeholder="Job title, keywords, or company" class="search-input" value="{{ request.args.get('search', '') }}">
+                        <input type="text" name="location" placeholder="Location" class="search-input" value="{{ request.args.get('location', '') }}">
+                        <div>
+                            <button type="submit" class="search-btn">Search Jobs</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters and Jobs Section -->
+    <section class="jobs-section">
+        <div class="container">
+            <div class="jobs-layout">
+                <!-- Sidebar Filters -->
+                <aside class="filters-sidebar">
+                    <h3>Filters</h3>
+                    
+                    <form method="GET" action="{{ url_for('home_page') }}">
+                        <div class="jobs-header">
+                            <h5>Sort By</h5>
+                            <div>
+                                {{ form.order_by(class="form-input") }}
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <h4>Category</h4>
+                                <div class="checkbox-group">
+                                    {% for choice in form.job_category %}
+                                        <label class="checkbox-container">
+                                            {{ choice }}
+                                            <span class="checkbox-label">
+                                                {{ choice.label }}
+                                            </span>
+                                        </label>
+                                    {% endfor %}
+                                </div>    
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Salary Range</h4>
+                                <div class="checkbox-group">
+                                    {% for choice in form.salary_range %}
+                                        <label class="checkbox-container">
+                                            {{ choice }}
+                                            <span class="checkbox-label">
+                                                {{ choice.label }}
+                                            </span>
+                                        </label>
+                                    {% endfor %}
+                                </div>    
+                        </div>
+
+                        {{ form.submit(class="apply-btn btn-submit btn-full") }}
+
+                        <a href="{{ url_for('home_page') }}" class="clear-filters-btn btn-submit btn-full">Clear All Filters</a>
+                    </form>
+                </aside>
+
+                <!-- Jobs Listing -->
+                <main class="jobs-main">
+                    <div class="jobs-header">
+                        <h2>Available Jobs <span class="job-count">({{ jobs.total if jobs else 0 }})</span></h2>
+                    </div>
+
+                    {% if request.args.get('company') %}
+                        <div class="active-filters">
+                            <span class="filter-label">Filtering by </span>
+                            <span class="filter-tag">
+                                Company: {{ request.args.get('company') }}
+                            <a href="{{ url_for('home_page') }}" class="remove-filter-btn">Clear</a>
+                            </span>
+                        </div>
+                    {% endif %}
+
+                    <!-- Job Cards -->
+                    <div class="jobs-grid">
+                        {% if jobs and jobs.items %}
+                            {% for job in jobs.items %}
+                                <div class="job-card">
+                                    <div class="job-card-header">
+                                        <div class="avatar" style="width: 60px; height: 60px; font-size: 40px; border-radius: 20px; overflow: hidden;">
+                                            <img src="{{ url_for('static', filename='../static/images/'+job.author.image_file) }}" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="job-info">
+                                            <h3 class="job-title">{{ job.title }}</h3>
+                                            <a href="{{ url_for('home_page', company=job.company) }}" class="company-name">{{ job.company }}</a>
+                                        </div>
+                                        <span class="job-category-badge">{{ job.category }}</span>
+                                    </div>
+                                    
+                                    <div class="job-details">
+                                        <span class="job-detail-item">
+                                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                            </svg>
+                                            {{ job.location }}
+                                        </span>
+                                        {% if job.salary %}
+                                        <span class="job-detail-item">
+                                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                                            </svg>
+                                            ${{ "{:,}".format(job.salary) }}
+                                        </span>
+                                        {% endif %}
+                                    </div>
+
+                                    <p class="job-short-description">
+                                        {{ job.short_description }}
+                                    </p>
+
+                                    <div class="job-card-footer">
+                                        <div class="job-dates">
+                                            <span class="posted-date">Posted: {{ job.date_posted.strftime('%b %d, %Y') if job.date_posted else 'N/A' }}</span>
+                                            <span class="expire-date">Expires: {{ job.date_expire.strftime('%b %d, %Y') if job.date_expire else 'N/A' }}</span>
+                                        </div>
+                                        <a href="{{ url_for('job_detail_page', job_id=job.id) }}" class="view-details-btn">View Details</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="no-jobs">
+                                <svg width="64" height="64" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+                                </svg>
+                                <h3>No jobs found</h3>
+                                <p>Try adjusting your search criteria or filters</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Pagination -->
+                    {% if jobs and jobs.total > 0 %}
+                    <div class="pagination">
+                        {% if jobs.has_prev %}
+                            <a href="{{ url_for('home_page', page=jobs.prev_num, **request.args) }}" class="page-btn">Previous</a>                        {% else %}
+                            <span class="page-btn disabled">Previous</span>
+                        {% endif %}
+
+                        {% for page_num in jobs.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                            {% if page_num %}
+                                {% if page_num == jobs.page %}
+                                    <span class="page-btn active">{{ page_num }}</span>
+                                {% else %}
+                                    <a href="{{ url_for('home_page', page=page_num, **request.args) }}" class="page-btn">{{ page_num }}</a>
+                                {% endif %}
+                            {% else %}
+                                <span class="page-btn disabled">...</span>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if jobs.has_next %}
+                            <a href="{{ url_for('home_page', page=jobs.next_num, **request.args) }}" class="page-btn">Next</a>
+                        {% else %}
+                            <span class="page-btn disabled">Next</span>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </main>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
