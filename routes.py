@@ -355,7 +355,7 @@ def cv_compare_page(job_id):
         try:
             # Save the uploaded file
             filename = secure_filename(cv_file.filename)
-            filepath = os.path.join('jobboard/static/cv_folder', f"{current_user.id}_{filename}")
+            filepath = os.path.join('static/cv_folder', f"{current_user.id}_{filename}")
             cv_file.save(filepath)
             
             # Compare CV with job description
